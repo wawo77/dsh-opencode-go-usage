@@ -72,33 +72,15 @@ for (const rel of files) {
 }
 
 // ---------- LICENSE ----------
-const pkg = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8'));
-const year = new Date().getFullYear();
-const license = `MIT License
-
-Copyright (c) ${year} ${pkg.name} contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-`;
-writeFileSync(join(OUT, 'LICENSE'), license, 'utf8');
+// 现在是源码树里的真实文件：README 的 [MIT](LICENSE) 链接在本地点开也得能看，
+// 临时生成到 dist 里会让本地链接是坏的。这里只负责确认它被复制过来了。
+if (!existsSync(join(OUT, 'LICENSE'))) {
+  console.error('LICENSE 没被复制进上传文件夹 —— 源码树里应该有一个（README 链接指向它）');
+  process.exit(1);
+}
 
 // ---------- 核对：运行时文件一个都不能少 ----------
+const pkg = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8'));
 const missing = RUNTIME_FILES.filter((rel) => rel !== 'package.json' && !existsSync(join(OUT, rel)));
 if (missing.length > 0) {
   console.error('运行时文件没被复制进去：');

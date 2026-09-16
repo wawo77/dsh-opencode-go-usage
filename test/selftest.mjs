@@ -172,13 +172,22 @@ check('service picks the active Go route', () => {
   assert.equal(active.model, 'deepseek-v4.1-flash')
 })
 
-check('only Go routes reach the local ledger', () => {
+check('the local ledger counts supported providers, not just Go', () => {
   const service = new host.GoUsageService(fakeCtx)
   const usage = { inputTokens: 1_000_000, outputTokens: 0, cacheReadTokens: 0, cacheWriteTokens: 0 }
+  // 有适配器的 provider 要记 —— token 统计和哪家套餐无关。
+  // 原来只记 Go，导致给 DeepSeek 官方加适配器后"今日 token"是空的：
+  // 界面显示了余额，却说今天一个 token 都没用。
   service.record('deepseek-official', 'deepseek-v4-flash', usage, Date.now())
-  assert.equal(service.buckets.size, 0, 'official DeepSeek is not Go traffic')
+  assert.equal(service.buckets.size, 1, 'DeepSeek 官方有适配器，应当计入')
   service.record('opencode-go-v41', 'deepseek-v4.1-flash', usage, Date.now())
-  assert.equal(service.buckets.size, 1)
+  assert.equal(service.buckets.size, 2)
+  // 没有适配器的 provider 仍不记：这种情况界面走"只显示本地统计"的中性提示，
+  // 账本留白才一致
+  service.record('anthropic-official', 'claude-sonnet', usage, Date.now())
+  assert.equal(service.buckets.size, 2, '没有适配器的 provider 不该进账本')
+  service.record(undefined, 'x', usage, Date.now())
+  assert.equal(service.buckets.size, 2, 'provider 缺失时不该崩，也不该记')
 })
 
 check('view() reports server percentages and a local estimate', () => {
