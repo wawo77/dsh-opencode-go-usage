@@ -1,0 +1,43 @@
+{
+  "name": "dsh-opencode-go-usage",
+  "version": "0.4.0",
+  "private": true,
+  "description": "DSH Web 桌宠用量小窗「蓝色大肥鱼」：骨骼动画角色（呼吸 / 蹦跳 / 耳朵抖动 / 尾巴摆动）+ 点击小黄鸭与缩放「啵」音效；按 DSH 配置的套餐自动匹配用量适配器（OpenCode Go / Command Code / DeepSeek 官方），套餐制显示用量百分比、按量计费显示余额，失败时降级到本地统计。",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "opencode-go",
+    "command-code",
+    "usage",
+    "desktop-pet"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "_files_comment": "必须逐个列到运行时真正会读的文件。assets/rig 整目录不能直接收进来 —— 里面还放着生成用的原图与对照图（约 15MB），只需要 rig.json 与 parts/。少列一个会导致对面机器上静默退回静态整图。tools/pack.mjs 与 selftest 会校验这份清单。",
+  "files": [
+    "lib",
+    "assets/pet.png",
+    "assets/rig/rig.json",
+    "assets/rig/parts",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.1.5-rc.1"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [],
+      "platform": "web"
+    }
+  }
+}

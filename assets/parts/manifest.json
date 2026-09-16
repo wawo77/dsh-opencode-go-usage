@@ -1,0 +1,58 @@
+{
+ "sprite": "pet.png",
+ "width": 322,
+ "height": 420,
+ "ratio": 0.7,
+ "radius": 4,
+ "grow": 2,
+ "parts": {
+  "ahoge": {
+   "minX": 153,
+   "minY": 1,
+   "maxX": 205,
+   "maxY": 39,
+   "roi": [
+    0.4,
+    0,
+    0.28,
+    0.095
+   ]
+  },
+  "hairLeft": {
+   "minX": 1,
+   "minY": 124,
+   "maxX": 80,
+   "maxY": 364,
+   "roi": [
+    0,
+    0.3,
+    0.245,
+    0.585
+   ]
+  },
+  "hairRight": {
+   "minX": 223,
+   "minY": 124,
+   "maxX": 312,
+   "maxY": 373,
+   "roi": [
+    0.7,
+    0.3,
+    0.265,
+    0.6
+   ]
+  },
+  "tail": {
+   "minX": 249,
+   "minY": 208,
+   "maxX": 320,
+   "maxY": 337,
+   "roi": [
+    0.78,
+    0.5,
+    0.22,
+    0.3
+   ]
+  }
+ }
+}

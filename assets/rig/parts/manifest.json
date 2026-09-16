@@ -1,0 +1,38 @@
+{
+ "source": {
+  "accessories": "可动组件-呆毛-左右耳朵和尾巴.jpg",
+  "body": "人物主体-去掉可动配件.png"
+ },
+ "parts": {
+  "ahoge": {
+   "width": 333,
+   "height": 293,
+   "srcX": 862,
+   "srcY": 216
+  },
+  "earLeft": {
+   "width": 406,
+   "height": 350,
+   "srcX": 168,
+   "srcY": 937
+  },
+  "earRight": {
+   "width": 404,
+   "height": 350,
+   "srcX": 905,
+   "srcY": 936
+  },
+  "tail": {
+   "width": 391,
+   "height": 492,
+   "srcX": 1486,
+   "srcY": 847
+  }
+ },
+ "body": {
+  "width": 1035,
+  "height": 1392,
+  "srcX": 441,
+  "srcY": 115
+ }
+}
