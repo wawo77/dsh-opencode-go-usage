@@ -1,0 +1,37 @@
+# 依赖与构建产物
+node_modules/
+dist/
+npm-debug.log*
+
+# 本会话的存档与临时目录 —— 是"回退点"，不是源码
+.snapshots/
+
+# npm 缓存（沙箱把缓存目录指到了工作区内，别一起提交）
+.npm-cache/
+
+# 一次性调查脚本与下载来的第三方包
+.scratch/
+
+# 中间产物：素材管线的调试输出，不是插件运行需要的
+output/
+preview/
+
+# 素材管线的中间图（重建素材时由 tools/*.mjs 重新生成）
+assets/inspect.png
+assets/compare*.png
+assets/parts-review.png
+assets/probe-*.png
+assets/probe-truth.png
+assets/segment-preview.png
+assets/pose-test.png
+assets/boundary-zoom.png
+assets/rig/review.png
+assets/rig/assembled.png
+assets/rig/accessories.png
+assets/rig/anim/
+
+# OS / 编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
