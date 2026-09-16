@@ -2,16 +2,28 @@
 
 DSH Web GUI 的 **桌宠用量小窗**，角色叫 **蓝色大肥鱼**。
 
+左下角常驻一个角色。**不点它的时候**，头顶气泡显示用量（套餐制显示百分比、按量计费显示余额），数字按状态变色。**点一下**：角色 Q 弹地压扁→弹起→回弹，响起小黄鸭的"吱"声，说一句跟当前用量相配的台词，同时展开详情卡片。**在角色上滚轮**可以缩放，每变一档响一声"啵"。可以拖着搬家；贴左半屏时角色会转身朝右，贴右半屏朝左。
+
 ## 安装
 
 ```powershell
-dsh plugin --profile web add "github:<用户名>/dsh-opencode-go-usage"
+dsh plugin --profile web add "github:wawo77/dsh-opencode-go-usage"
 ```
 
 装完确认 `~/.dsh/profiles/web/package.json` 的 `dsh.profile.bundles` 里有
 `"dsh-opencode-go-usage"`，然后重启 `dsh web`。
 
-也可以直接用打好的包：`dsh plugin --profile web add "<路径>/dsh-opencode-go-usage-0.3.0.tgz"`。
+> **不需要本机装 git。** pnpm 会直接取 GitHub 的 tarball —— 实测在没装 git 的
+> Windows 上，`github:` 形式的依赖（如 `@loserfox/distill`）能正常装成。
+> 安装会把整个仓库拉下来（约 19 MB，含素材与开发工具链）。
+>
+> 万一取不到，可以点 **Code → Download ZIP**，解压到**路径不含空格**的目录，然后：
+>
+> ```powershell
+> dsh plugin --profile web add "link:C:/path/to/dsh-opencode-go-usage"
+> ```
+>
+> 路径含空格会让 pnpm 把 `link:` 拆断（`ERR_PNPM_PACKAGE_MANAGER_ADD_RESOLVE_LATEST`）。
 
 ## 它显示什么
 
