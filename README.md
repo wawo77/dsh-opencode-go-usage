@@ -2,7 +2,7 @@
 
 > DSH Web GUI 的**桌宠用量小窗**。角色叫 **蓝色大肥鱼**。
 
-<img src="https://raw.githubusercontent.com/kingOfSoySauce/dsh-skin-market/main/site/public/skin-screenshots/wawo77__dsh-opencode-go-usage/e6a39c3f44a9ca3bde24cb70b51edec818e43ac6/home.gif" width="230" align="right" alt="蓝色大肥鱼">
+<img src="docs/pet.gif" width="230" align="right" alt="蓝色大肥鱼">
 
 在 DSH 网页界面角落里常驻一只角色，头顶气泡实时显示你的套餐用量——
 **不点开任何面板就能一眼看到今天烧了多少**。
